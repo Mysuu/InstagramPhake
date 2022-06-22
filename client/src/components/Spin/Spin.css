@@ -1,0 +1,8 @@
+.ant-spin-spinning {
+  position: fixed;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  text-align: center;
+}
