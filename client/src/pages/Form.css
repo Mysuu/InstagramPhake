@@ -7,3 +7,7 @@
   border-radius: 5px;
   padding: 30px;
 }
+
+input[type='file'] {
+  border: none
+}

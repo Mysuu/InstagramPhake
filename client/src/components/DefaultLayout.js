@@ -4,6 +4,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  VerticalRightOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
@@ -37,6 +38,11 @@ const DefaultLayout = ({ children }) => {
               key: "/profile",
               icon: <UploadOutlined />,
               label: <Link to="/profile">Profile</Link>,
+            },
+            {
+              key: "/login",
+              icon: <VerticalRightOutlined />,
+              label: <Link to="/login">Log out</Link>,
             },
           ]}
         />
