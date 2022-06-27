@@ -1,10 +1,10 @@
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  HomeOutlined,
   UserOutlined,
-  VideoCameraOutlined,
-  VerticalRightOutlined,
+  FileAddOutlined,
+  SwapLeftOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
@@ -26,22 +26,22 @@ const DefaultLayout = ({ children }) => {
           items={[
             {
               key: "/",
-              icon: <UserOutlined />,
+              icon: <HomeOutlined />,
               label: <Link to="/">Home</Link>,
             },
             {
               key: "/addpost",
-              icon: <VideoCameraOutlined />,
+              icon: <FileAddOutlined />,
               label: <Link to="/addpost">Add post</Link>,
             },
             {
               key: "/profile",
-              icon: <UploadOutlined />,
+              icon: <UserOutlined />,
               label: <Link to="/profile">Profile</Link>,
             },
             {
               key: "/login",
-              icon: <VerticalRightOutlined />,
+              icon: <SwapLeftOutlined />,
               label: <Link to="/login">Log out</Link>,
             },
           ]}

@@ -17,3 +17,15 @@ export const addPost = (values) => async (dispatch) => {
     message.error("Something wrong!");
   }
 };
+
+export const getAllPosts = (values) => async (dispatch) => {
+  dispatch({ type: "LOADING", payload: true });
+  try {
+    const res = await axios.get("/api/posts/getallposts", values);
+    dispatch({ type: "LOADING", payload: false });
+    dispatch({ type: "GET_ALL_POSTS", payload: res.data });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "LOADING", payload: false });
+  }
+};
