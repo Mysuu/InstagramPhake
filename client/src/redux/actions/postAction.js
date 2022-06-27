@@ -43,3 +43,17 @@ export const likeOrUnlikePost = (values) => async (dispatch) => {
     message.error("Something wrong!");
   }
 };
+
+export const addComment = (values) => async (dispatch) => {
+  values.userid = JSON.parse(localStorage.getItem("user"))._id.toString();
+
+  dispatch({ type: "ADD_COMMENT_LOADING", payload: true });
+  try {
+    await axios.post("/api/posts/addcomment", values);
+    dispatch({ type: "ADD_COMMENT_LOADING", payload: false });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "ADD_COMMENT_LOADING", payload: false });
+    message.error("Something wrong!");
+  }
+};
