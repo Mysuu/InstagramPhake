@@ -10,11 +10,13 @@ import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./PriviteRouter/PrivateRouter";
 
 function App() {
-  const { loading } = useSelector((state) => state.alertsReducer);
+  const { loading, likeOrUnlikeLoading } = useSelector(
+    (state) => state.alertsReducer
+  );
 
   return (
     <div className="App">
-      {loading && <Spinner />}
+      {(loading || likeOrUnlikeLoading) && <Spinner />}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ProtectedRoute />}>

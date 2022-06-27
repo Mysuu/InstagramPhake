@@ -4,7 +4,7 @@ import {
   HomeOutlined,
   UserOutlined,
   FileAddOutlined,
-  SwapLeftOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
@@ -40,9 +40,17 @@ const DefaultLayout = ({ children }) => {
               label: <Link to="/profile">Profile</Link>,
             },
             {
-              key: "/login",
-              icon: <SwapLeftOutlined />,
-              label: <Link to="/login">Log out</Link>,
+              icon: <LogoutOutlined />,
+              label: (
+                <Link
+                  to=""
+                  onClick={() => {
+                    localStorage.removeItem("user");
+                  }}
+                >
+                  Log out
+                </Link>
+              ),
             },
           ]}
         />
@@ -63,7 +71,7 @@ const DefaultLayout = ({ children }) => {
               }
             )}
             <h2>Instagram Phake</h2>
-            <h4>Temp User</h4>
+            <h4>{JSON.parse(localStorage.getItem("user")).username}</h4>
           </div>
         </Header>
         <Content

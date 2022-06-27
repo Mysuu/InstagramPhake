@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { HeartOutlined, CommentOutlined } from "@ant-design/icons";
+import { HeartFilled, CommentOutlined } from "@ant-design/icons";
 import moment from "moment";
+import { getAllPosts, likeOrUnlikePost } from "../../redux/actions/postAction";
 import "./Post.css";
 
 const Post = ({ post }) => {
+  const dispatch = useDispatch();
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const alreadyLiked = post.likes.find(
+    (obj) => obj.user.toString() === currentUser._id
+  );
+  const { likeOrUnlikeLoading } = useSelector((state) => state.alertsReducer);
+
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, [dispatch, likeOrUnlikeLoading]);
+
   return (
     <div className="post-container">
       <div className="post-title">
@@ -26,7 +39,12 @@ const Post = ({ post }) => {
       <p className="description">{post.description}</p>
       <div className="post-bottom">
         <div>
-          <HeartOutlined />
+          <HeartFilled
+            style={{ color: alreadyLiked ? "red" : "grey" }}
+            onClick={() => {
+              dispatch(likeOrUnlikePost({ postid: post._id }));
+            }}
+          />
           <p>{post.likes.length}</p>
         </div>
         <div>

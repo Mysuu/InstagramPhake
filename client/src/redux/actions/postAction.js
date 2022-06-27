@@ -29,3 +29,17 @@ export const getAllPosts = (values) => async (dispatch) => {
     dispatch({ type: "LOADING", payload: false });
   }
 };
+
+export const likeOrUnlikePost = (values) => async (dispatch) => {
+  values.userid = JSON.parse(localStorage.getItem("user"))._id.toString();
+
+  dispatch({ type: "LIKE_UNLIKE_LOADING", payload: true });
+  try {
+    await axios.post("/api/posts/likeorunlikepost", values);
+    dispatch({ type: "LIKE_UNLIKE_LOADING", payload: false });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "LIKE_UNLIKE_LOADING", payload: false });
+    message.error("Something wrong!");
+  }
+};

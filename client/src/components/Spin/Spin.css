@@ -6,3 +6,8 @@
   opacity: 1;
   text-align: center;
 }
+
+.ant-spin-lg .ant-spin-dot{
+  position: absolute;
+  top: 140px;
+}
